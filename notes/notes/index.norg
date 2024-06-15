@@ -1,0 +1,37 @@
+@document.meta
+title: index
+description: Nota de prueba 
+authors: jose
+categories: Nignuna
+created: 2023-10-10T21:17:17-0600
+updated: 2023-10-10T21:26:08-0600
+version: 1.1.1
+@end
+
+* Notas
+** Sub titulo
+   /Negrita/
+  Subrayado_
+   *Negrita*
+   | example
+   |- Hola
+
+
+   
+   - mi primer *nota* en norg
+
+     - (-) A1
+   - ( ) Hola
+   ** 
+  
+* Introduction
+  Before diving into the details we will start with an introduction. The Norg file format was
+  designed as part of the [Neorg]{https://github.com/nvim-neorg/neorg} plugin for Neovim which was
+  started by /Vhyrro (@vhyrro)/ in April 2021. Soon after starting this work, /Max Rossmannek
+  (@mrossinek)/ joined the development team, and, with the help of the [Neorg] community, the two
+  have shaped the Norg syntax to what it has become today.
+
+  ~ Hola
+  - Hola
+    {:jose:}
+

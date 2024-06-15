@@ -1,0 +1,159 @@
+format = """
+[\ue0c7 ](#005f87)\
+$username\
+[ ➜  󰣇 ](fg:#eeeeee bg:#005f87)\
+$os\
+[\ue0bc](bg:#626262 fg:#005f87)\
+$directory\
+[\ue0bc](fg:#626262 bg:#eeeeee)\
+$git_branch\
+$git_commit\
+$git_status\
+[\ue0bc](fg:#eeeeee bg:#FB8B24)\
+$git_metrics\
+$git_state\
+[](fg:#FB8B24)\
+$fill\
+[](#eeeeee)\
+$golang\
+$dart\
+$nodejs\
+$rust\
+[\ue0b8](fg:#eeeeee bg:#626262)\
+${custom.docker}\
+[\ue0b8 ](fg:#626262 bg:#005f87)\
+$jobs\
+$time\
+[\ue0c6 ](fg:#005f87)
+$python\
+$character
+"""
+
+# Disable the blank line at the start of the prompt
+#add_newline = true
+
+[character]
+success_symbol = '[](bold green) '
+error_symbol = '[✗](bold red) '
+
+
+
+
+# You can also replace your username with a neat symbol like  to save some space
+[username]
+show_always = true
+style_user = "bg:#005f87 fg:15"
+style_root = "bg:#005f87"
+format = '[ $user]($style)'
+
+[os]
+format = "[($name)]($style)"
+style = "bg:#005f87 fg:15"
+# name = "Pop"
+disabled = false
+
+[directory]
+style = "bg:#626262 fg:232"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+# Here is how you can shorten some long paths by text replacement
+# similar to mapped_locations in Oh My Posh:
+[directory.substitutions]
+"Documentos" = " "
+"Descargas" = " "
+"Música" = " "
+"Imágenes" = " "
+"~" = ""
+# Keep in mind that the order matters. For example:
+# "Important Documents" = "  "
+# will not be replaced, because "Documents" was already substituted before.
+# So either put "Important Documents" before "Documents" or use the substituted version:
+# "Important  " = "  "
+
+[git_branch]
+symbol = ""
+style = "bg:#eeeeee fg:232"
+format = '[ $symbol $branch ]($style)'
+# truncation_length = 8
+# truncation_symbol = "…/"
+
+[git_status]
+style = "bg:#eeeeee fg:232"
+format = '[$all_status$ahead_behind ]($style)'
+ahead = "⇡${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+behind = "⇣${count}"
+
+[git_metrics]
+added_style = "bg:#FB8B24 fg:#0000FF"
+deleted_style = "bg:#FB8B25 fg:#FF0000"
+format = "[+$added]($added_style)[ -$deleted]($deleted_style)"
+disabled = false
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "bright-black"
+#-------------------Finish Left Part---------------------------
+
+#--------------------Relleno--------------------------------
+[fill]
+symbol = " "
+#--------------------Relleno--------------------------------
+
+#-------------------Start Right Part---------------------------
+[golang]
+symbol = ""
+style = "bg:#eeeeee fg:#005f87"
+format = '[ $symbol ($version) ]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:#eeeeee fg:232"
+format = '[ $symbol ($version) ]($style)'
+
+[rust]
+symbol = ""
+style = "bg:#eeeeee fg:232"
+format = '[ $symbol ($version) ]($style)'
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:#005f87"
+format = "[   $time ]($style)"
+
+# [docker_context]
+# symbol = " "
+# style = "bg:#06969A"
+# format = '[ $symbol $context ]($style) '
+# # $path' ~/.config/starship.toml
+# detect_files = ["Dockerfile", "docker-compose.yml", "docker-compose.yaml"]
+# disabled = false
+# only_with_files = true
+
+[custom.zsh]
+command = "echo X"
+when = true
+
+[custom.docker]
+symbol = " "
+style = "bg:#626262"
+detect_files = ["Dockerfile", "docker-compose.yml", "docker-compose.yaml"]
+format = "[$symbol]($style)"
+# when = """ command -v docker &> /dev/null; exit (echo $?); """
+# prefix = "on "
+# [docker]
+# disabled = false
+
+[jobs]
+format = "[  ]($style)"
+style = "fg:#5F0F40 bg:#005f87"
+
+[python]
+format = "[$symbol (venv) $version ]($style)"
+style = "bg:bold"
+pyenv_prefix = "pyenv"
+detect_extensions = ['']
+detect_folders = ['']
